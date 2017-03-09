@@ -2,11 +2,11 @@ var App = window.App;
 //var Truck = window.App;
 //var DataStore = window.DataStore;
 
-//for DataStore() test
 var ds = new App.DataStore();
 ds.add('m@bond.com', 'tea');
 ds.add('james@bond.com', 'eshpressho');
 
+//test DataStore()
 QUnit.test('DataStore', function( assert ) {
     var obj = {'m@bond.com': 'tea', 'james@bond.com': 'eshpressho'};
     assert.equal(ds.get('m@bond.com'), 'tea', 'get(\'m@bond.com\') - Passed');
@@ -14,6 +14,7 @@ QUnit.test('DataStore', function( assert ) {
     assert.deepEqual(obj, ds.getAll(), 'getAll() returned successfully');
 });
 
+//test Truck()
 QUnit.test('Truck getAllOrders()', function(assert) {
     var newTruck = new App.Truck('ncc-1701', new App.DataStore());
     newTruck.createOrder({ emailAddress: 'me@goldfinger.com', coffee: 'double mocha'});
@@ -23,4 +24,9 @@ QUnit.test('Truck getAllOrders()', function(assert) {
     newTruck.getAllOrders();
 
     assert.equal(newTruck.getAllOrders(), 'Truck #ncc-1701 has pending orders: me@goldfinger.com double mocha | dr@no.com decaf | m@bond.com earl grey | ', newTruck.getAllOrders());
+
+    newTruck.deliverOrder('dr@no.com');
+    newTruck.deliverOrder('m@bond.com');
+
+    assert.equal(newTruck.getAllOrders(), 'Truck #ncc-1701 has pending orders: me@goldfinger.com double mocha | ', newTruck.getAllOrders());
 });
