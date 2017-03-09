@@ -1,6 +1,6 @@
 var App = window.App;
-var Truck = window.App;
-var DataStore = window.DataStore;
+//var Truck = window.App;
+//var DataStore = window.DataStore;
 
 //for DataStore() test
 var ds = new App.DataStore();
