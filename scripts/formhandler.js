@@ -29,6 +29,7 @@
                     $('#myModal').modal('show');
                     $('#useAchievement').on('click', function() {
                         $('#pUp').css('display', 'block');
+                        this.$email = $('#emailInput').val();
                     });
                     return;
                 }
@@ -41,6 +42,7 @@
             console.log(data);
             fn(data);
 
+            $('#pUp').css('display', 'none');
             this.reset();
         });
     };
