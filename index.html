@@ -1,12 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>coffeerun</title>
-    </head>
-    <body>
-        <script src="scripts/datastore.js" charset="utf-8"></script>
-        <script src="scripts/truck.js" charset="utf-8"></script>
-        <script src="scripts/main.js" charset="utf-8"></script>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>coffeerun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+    <header>
+        <h1>CoffeeRun</h1>
+    </header>
+    <div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Achievement Unlocked</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Thank you for your continued committement to flavor! You have unlocked an achievement. Would you like to use your achievement?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeMyModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="useAchievement" type="button" class="btn btn-primary" data-dismiss="modal">Use Achievement!</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal fade" tabindex="-1" id="enterEmailModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">EMAIL MISSING!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please enter an email address!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form data-coffee-order="form">
+                    <div class="form-group">
+                        <label for="coffeeOrder">Coffee Order</label>
+                        <input class="form-control" name="coffee" id="coffeeOrder" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>
+                        <input class="form-control" type="email" name="emailAddress" id="emailInput" value="" placeholder="dr@who.com">
+                    </div>
+                    <div class="radio">
+                        <label>
+                                <input type="radio" name="size" value="short">
+                                Short
+                            </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                                <input type="radio" name="size" value="tall" checked>
+                                Tall
+                            </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                                <input type="radio" name="size" value="grande">
+                                Grande
+                            </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                                <input type="radio" name="size" value="zilla">
+                                ZILLA!
+                            </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="flavorShot">Flavor Shot</label>
+                        <select id="flavorShot" class="form-control" name="flavor">
+                                <option value="none">None</option>
+                                <option value="caramel">Caramel</option>
+                                <option value="almond">Almond</option>
+                                <option value="mocha">Mocha</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:green" id="strengthLabel" for="strengthLevel">Caffeine Rating 30</label>
+                        <input id="strengthLevel" type="range" name="strength" value="30">
+                    </div>
+                    <div id="pUp" class="form-group" style="display:none">
+                        <label for="powerUp">Power Up</label>
+                        <select id="powerUp" class="form-control" name="powerUp">
+                                <option value="none">None</option>
+                                <option value="timeTravel">Time Travel</option>
+                                <option value="mindReading">Mind Reading</option>
+                                <option value="bugfreeCode">Bug-free Code</option>
+                            </select>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button id="resetButton" type="reset" class="btn btn-default">Reset</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="scripts/formhandler.js" charset="utf-8"></script>
+    <script src="scripts/datastore.js" charset="utf-8"></script>
+    <script src="scripts/truck.js" charset="utf-8"></script>
+    <script src="scripts/main.js" charset="utf-8"></script>
+</body>
+
 </html>
