@@ -5,12 +5,8 @@
         isCompanyEmail: function(email){
             return /.+@bignerdranch\.com$/.test(email);
         },
-        isValid: function(decaf, strength){
-            if (decaf == 'decaf' && strength > 20) {
-                return false;
-            } else {
-                return true;
-            }
+        isValid: function(isdecaf, strength){
+            return !(/\bdecaf\b/.test(isdecaf) && strength > 20);
         }
     };
 
