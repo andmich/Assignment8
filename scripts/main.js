@@ -22,5 +22,4 @@
 
     formHandler.addInputHandler(Validation.isCompanyEmail);
     formHandler.addOrderListener(Validation.isValid);
-    console.log(formHandler);
 })(window);

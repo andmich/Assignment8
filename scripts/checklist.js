@@ -18,7 +18,7 @@
             var email = event.target.value;
             this.removeRow(email);
             fn(email);
-        }).bind(this);
+        }.bind(this));
     };
 
     CheckList.prototype.addRow = function(coffeeOrder) {
