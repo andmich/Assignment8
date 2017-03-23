@@ -7,10 +7,7 @@
         if (!selector) {
             throw new Error('No selector provided');
         }
-
         this.$formElement = $(selector);
-        $('#strengthLabel').text('Caffeine Rating ' + 30);
-
         if (this.$formElement.length === 0) {
             throw new Error('Could not find element with selector: ' + selector);
         }
@@ -24,53 +21,55 @@
             event.preventDefault();
 
             var data = {};
-            if ($('#flavorShot').val() != 'none' && $('input[name=size]:checked').val() == 'zilla' && $('#strengthLevel').val() == 100) {
-                if(!$('#pUp').is(':visible')) {
-                    $('#myModal').modal('show');
-                    $('#useAchievement').on('click', function() {
-                        $('#pUp').css('display', 'block');
-                        this.$email = $('#emailInput').val();
-                    });
-                    return;
-                }
-            }
 
             $(this).serializeArray().forEach(function (item) {
                 data[item.name] = item.value;
-                console.log(item.name + ' is ' + item.value);
             });
-            console.log(data);
             fn(data);
-
-            $('#pUp').css('display', 'none');
             this.reset();
         });
     };
 
-    FormHandler.prototype.addSliderHandler = function() {
-        $('#strengthLevel').change(function(event) {
-            event.preventDefault();
-            var s = $('#strengthLevel').val();
-            var color = {};
-            if (s <= 33) {
-                color = 'green';
+    FormHandler.prototype.addInputHandler = function(fn) {
+        console.log('setting input handler from form');
+        this.$formElement.on('input', '[name="emailAddress"]', function(event) {
+            var emailAddress = event.target.value;
+            var message = '';
+            if (fn(emailAddress)) {
+                event.target.setCustomValidity('');
+            } else {
+                message = emailAddress + ' is not an authorized email address';
+                event.target.setCustomValidity(message);
             }
-            else if (s > 33 && s < 66) {
-                color = 'orange';
-            }
-            else if (s >= 66) {
-                color = 'red';
-            }
-            $('#strengthLabel').text('Caffeine Rating ' + s);
-            $('#strengthLabel').css('color', color);
         });
     };
 
-    FormHandler.prototype.addResetHandler = function() {
-        this.$formElement.on('reset', function() {
-            $('#strengthLabel').css('color', 'green');
-            $('#strengthLabel').text('Caffeine Rating ' + 30);
-            this.elements[0].focus();
+    FormHandler.prototype.addOrderListener = function(fn) {
+        this.$formElement.on('input', '[name="coffee"]', function(event) {
+            var order = event.target.value;
+            var strength = $('#strengthLevel').val();
+            console.log(strength);
+            var message = '';
+            console.log(order, strength);
+            if (fn(order, strength)) {
+                event.target.setCustomValidity('');
+            } else {
+                message = 'strength must be below 20!';
+                event.target.setCustomValidity(message);
+            }
+        });
+
+        this.$formElement.on('input', '[name="strength"]', function(event) {
+            var strength = event.target.value;
+            var order = $('#coffeeOrder').val();
+            var message = ' ';
+            console.log(order, strength);
+            if(fn(order, strength)) {
+                document.getElementById('coffeeOrder').setCustomValidity('');
+            } else {
+                message = 'value cannot be greater than ' + 20;
+                document.getElementById('coffeeOrder').setCustomValidity(message);
+            }
         });
     };
 
