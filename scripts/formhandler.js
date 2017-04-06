@@ -24,9 +24,13 @@
 
             $(this).serializeArray().forEach(function (item) {
                 data[item.name] = item.value;
+                console.log(item.name + ' is ' + item.value);
             });
-            fn(data);
-            this.reset();
+            fn(data)
+                .then(function() {
+                    this.reset();
+                    this.elements[0].focus();
+                }.bind(this));
         });
     };
 
@@ -48,9 +52,7 @@
         this.$formElement.on('input', '[name="coffee"]', function(event) {
             var order = event.target.value;
             var strength = $('#strengthLevel').val();
-            console.log(strength);
             var message = '';
-            console.log(order, strength);
             if (fn(order, strength)) {
                 event.target.setCustomValidity('');
             } else {
@@ -63,7 +65,6 @@
             var strength = event.target.value;
             var order = $('#coffeeOrder').val();
             var message = ' ';
-            console.log(order, strength);
             if(fn(order, strength)) {
                 document.getElementById('coffeeOrder').setCustomValidity('');
             } else {

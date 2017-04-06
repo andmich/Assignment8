@@ -1,0 +1,36 @@
+{
+  "coffeeorders": [
+    {
+      "coffee": "asdf",
+      "emailAddress": "asdf@bignerdranch.com",
+      "size": "tall",
+      "flavor": "none",
+      "strength": "30",
+      "id": "ryD1gHXae"
+    },
+    {
+      "coffee": "asdf",
+      "emailAddress": "asdf@bignerdranch.com",
+      "size": "tall",
+      "flavor": "none",
+      "strength": "30",
+      "id": "ry3JlSm6x"
+    },
+    {
+      "coffee": "asdf",
+      "emailAddress": "asdf@bignerdranch.com",
+      "size": "tall",
+      "flavor": "none",
+      "strength": "30",
+      "id": "asdf@bignerdranch.com"
+    },
+    {
+      "coffee": "asdf",
+      "emailAddress": "asd@bignerdranch.com",
+      "size": "tall",
+      "flavor": "none",
+      "strength": "30",
+      "id": "asd@bignerdranch.com"
+    }
+  ]
+}
